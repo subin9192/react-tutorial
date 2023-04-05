@@ -19,12 +19,12 @@ const StyledButton = styled.button`
   font-size: 1rem;
 
   /* 색상 */
-  background: #228be6;
+  background: ${(props) => props.theme.palette.blue};
   &:hover {
-    background: ${lighten(0.1, "#228be6")};
+    background: ${(props) => lighten(0.1, props.theme.palette.blue)};
   }
   &:active {
-    background: ${darken(0.1, "#228be6")};
+    background: ${(props) => darken(0.1, props.theme.palette.blue)};
   }
 
   /* 기타 */
