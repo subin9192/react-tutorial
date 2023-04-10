@@ -10,6 +10,12 @@ const AppBlock = styled.div`
   padding: 1rem;
 `;
 
+const ButtonGroup = styled.div`
+  & + & {
+    margin-top: 1rem;
+  }
+`;
+
 const palette = {
   blue: "#228be6",
   gray: "#496057",
@@ -24,7 +30,24 @@ function App() {
       }}
     >
       <AppBlock>
-        <Button>BUTTON</Button>
+        <ButtonGroup>
+          <Button color="pink" size="large">
+            BUTTON
+          </Button>
+          <Button>BUTTON</Button>
+          <Button color="gray" size="small">
+            BUTTON
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button color="pink" size="large" outline>
+            BUTTON
+          </Button>
+          <Button outline>BUTTON</Button>
+          <Button color="gray" size="small" outline>
+            BUTTON
+          </Button>
+        </ButtonGroup>
       </AppBlock>
     </ThemeProvider>
   );

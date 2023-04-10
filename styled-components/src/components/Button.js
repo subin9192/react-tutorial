@@ -1,6 +1,56 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { darken, lighten } from "polished";
+
+const colorStyles = css`
+  /* 색상 */
+  ${({ theme, color }) => {
+    const selected = theme.palette[color];
+    return css`
+      background: ${selected};
+      &:hover {
+        background: ${lighten(0.1, selected)};
+      }
+      &:active {
+        background: ${darken(0.1, selected)};
+      }
+      ${(props) =>
+        props.outline &&
+        css`
+          color: ${selected};
+          background: none;
+          border: 1px solid ${selected};
+          &:hover {
+            background: ${selected};
+            color: white;
+          }
+        `}
+    `;
+  }}
+`;
+
+const sizes = {
+  large: {
+    height: "3rem",
+    fontSize: "1.25rem",
+  },
+  medium: {
+    height: "2.25rem",
+    fontSize: "1rem",
+  },
+  small: {
+    height: "1.75rem",
+    fontSize: "0.875rem",
+  },
+};
+
+const sizeStyles = css`
+  /* 크기 */
+  ${({ size }) => css`
+    height: ${sizes[size].height};
+    font-size: ${sizes[size].fontSize};
+  `}
+`;
 
 const StyledButton = styled.button`
   /* 공통 스타일 */
@@ -14,18 +64,8 @@ const StyledButton = styled.button`
   padding-left: 1rem;
   padding-right: 1rem;
 
-  /* 크기 */
-  height: 2.25rem;
-  font-size: 1rem;
-
-  /* 색상 */
-  background: ${(props) => props.theme.palette.blue};
-  &:hover {
-    background: ${(props) => lighten(0.1, props.theme.palette.blue)};
-  }
-  &:active {
-    background: ${(props) => darken(0.1, props.theme.palette.blue)};
-  }
+  ${colorStyles}
+  ${sizeStyles}
 
   /* 기타 */
   & + & {
@@ -33,8 +73,17 @@ const StyledButton = styled.button`
   }
 `;
 
-function Button({ children, ...rest }) {
-  return <StyledButton {...rest}>{children}</StyledButton>;
+function Button({ children, color, size, outline, ...rest }) {
+  return (
+    <StyledButton color={color} size={size} outline={outline} {...rest}>
+      {children}
+    </StyledButton>
+  );
 }
+
+Button.defaultProps = {
+  color: "blue",
+  size: "medium",
+};
 
 export default Button;
