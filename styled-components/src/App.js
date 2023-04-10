@@ -28,6 +28,9 @@ function App() {
   const onClick = () => {
     setDialog(true);
   };
+  const onConfirm = () => {
+    setDialog(false);
+  };
 
   return (
     <ThemeProvider
@@ -37,29 +40,15 @@ function App() {
     >
       <>
         <AppBlock>
-          <ButtonGroup>
-            <Button color="pink" size="large">
-              BUTTON
-            </Button>
-            <Button>BUTTON</Button>
-            <Button color="gray" size="small">
-              BUTTON
-            </Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button color="pink" size="large" outline>
-              BUTTON
-            </Button>
-            <Button outline>BUTTON</Button>
-            <Button color="gray" size="small" outline>
-              BUTTON
-            </Button>
-          </ButtonGroup>
+          <Button color="pink" size="large" onClick={onClick}>
+            삭제
+          </Button>
         </AppBlock>
         <Dialog
           title="정말로 삭제하시겠습니까?"
           confirmText="삭제"
           cancelText="취소"
+          visible={dialog}
         >
           데이터를 정말로 삭제하시겠습니까?
         </Dialog>
