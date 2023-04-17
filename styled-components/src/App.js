@@ -29,6 +29,11 @@ function App() {
     setDialog(true);
   };
   const onConfirm = () => {
+    console.log("확인");
+    setDialog(false);
+  };
+  const onCancel = () => {
+    console.log("취소");
     setDialog(false);
   };
 
@@ -48,6 +53,8 @@ function App() {
           title="정말로 삭제하시겠습니까?"
           confirmText="삭제"
           cancelText="취소"
+          onConfirm={onConfirm}
+          onCancel={onCancel}
           visible={dialog}
         >
           데이터를 정말로 삭제하시겠습니까?
