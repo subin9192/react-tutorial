@@ -1,4 +1,5 @@
-import React from "react";
+import React frlobalom "react";
+import { createGlobalStyle } from 'styled-components';
 
 function App() {
   return <div>안녕하세요!</div>;
