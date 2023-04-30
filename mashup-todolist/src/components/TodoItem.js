@@ -35,7 +35,12 @@ const CheckCircle = styled.div`
 const Text = styled.div`
   flex: 1;
   font-size: 21px;
-  color: #495507;
+  color: #495057;
+  ${(props) =>
+    props.done &&
+    css`
+      color: #ced4da;
+    `}
 `;
 const TodoItemBlock = styled.div`
   display: flex;
@@ -49,8 +54,12 @@ const TodoItemBlock = styled.div`
   }
 `;
 
-function TodoItem() {
-  return <div />;
+function TodoItem({ id, done, text }) {
+  return (
+    <TodoItemBlock>
+      <CheckCircle done={done}></CheckCircle>
+    </TodoItemBlock>
+  );
 }
 
 export default TodoItem;
