@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { createContext, useReducer } from "react";
 
 const initialTodos = [
   {
@@ -43,6 +43,9 @@ function todoReducer(state, action) {
       throw new Error(`Unhandled action type: ${action.type}`);
   }
 }
+
+const TodoStateContext = createContext();
+const TodoDispatchContext = createContext();
 
 export function TodoProvider({ children }) {
   const [state, dispatch] = useReducer(todoReducer, initialTodos);
