@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { MdDone, MdDelete } from "react-icons/md";
+import { useTodoDispatch } from "../TodoContext";
 
 const Remove = styled.div`
   opacity: 0;
@@ -59,12 +60,12 @@ function TodoItem({ id, done, text }) {
   const onToggle = () =>
     dispatch({
       type: "TOGGLE",
-      id;
+      id,
     });
   const onRemove = () =>
     dispatch({
       type: "REMOVE",
-      id
+      id,
     });
 
   return (

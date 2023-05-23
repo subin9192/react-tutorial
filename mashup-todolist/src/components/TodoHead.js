@@ -10,7 +10,7 @@ const TodoHeadBlock = styled.div`
   border-bottom: 1px solid #e9ecef;
 
   h1 {
-    margin; 0;
+    margin: 0;
     font-size: 36px;
     color: #343a40;
   }
@@ -33,12 +33,13 @@ function TodoHead() {
   const undoneTasks = todos.filter((todo) => !todo.done); //eslint-disable-line no-unused-vars
 
   const today = new Date();
-  const dateString = today.toLocaleDateString("ko-KR", {
+  console.log({ today });
+  const dateString = today.toLocaleTimeString("ko-KR", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
-  const dayName = today.toLacaleDateString("ko-KR", {
+  const dayName = today.toLocaleTimeString("ko-KR", {
     weekday: "long",
   });
   return (
