@@ -70,13 +70,15 @@ function TodoItem({ id, done, text }) {
 
   return (
     <TodoItemBlock>
-      <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>
+      <CheckCircle done={done} onClick={onToggle}>
+        {done && <MdDone />}
+      </CheckCircle>
       <Text done={done}>{text}</Text>
-      <Remove>
+      <Remove onClick={onRemove}>
         <MdDelete />
       </Remove>
     </TodoItemBlock>
   );
 }
 
-export default TodoItem;
+export default React.memo(TodoItem);
